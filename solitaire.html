@@ -17,14 +17,18 @@
 <div id="outer-bound" class="clear column">
   <div class="main-section text-holding">
     <h1>Solitaire!</h1>
+    <p>
+      This is in heavy wip. In theory it works, but nothing happens when you win and also it's probably riddled with 
+      more bugs than you could possibly imagine.
+    </p>
   </div>
   <div class="main-section paper column">
     <!-- ┏━┳┓┃□┣┻┫┛ -->
     <!-- ┐┘ -->
     <pre style="text-align: center; font-size: larger;">
      ┏━━━━━┳━━━━━━━━━━━━━━━━┳━━━━┓
-     ┃ <span onclick="deck_click()" id="deck" style="padding-right: 0.2em;">?🂠</span> ┃→<span onclick="stack_click('s0')" id="s0">□□</span>─<span onclick="stack_click('s1')" id="s1">□□</span>─<span onclick="stack_click('s2')" id="s2">□□</span>─<span onclick="stack_click('s3')" id="s3">□□</span>─<span onclick="stack_click('s4')" id="s4">□□</span>┐┃ <span onclick="ace_pile('ace-0')" id="ace-0">□□</span> ┃
-     ┃     ┃ <span onclick="return_selection()">╳</span> ←<span onclick="stack_click('s5')" id="s5">□□</span>─<span onclick="stack_click('s6')" id="s6">□□</span>─<span onclick="stack_click('s7')" id="s7">□□</span>─<span onclick="stack_click('s8')" id="s8">□□</span>┘┃ <span onclick="ace_pile('ace-1')" id="ace-1">□□</span> ┃
+     ┃ <span onclick="deck_click()" id="deck" style="padding-right: 0.2em;">?🂠</span> ┃←<span onclick="stack_click('s0')" id="s0">□□</span>─<span onclick="stack_click('s1')" id="s1">□□</span>─<span onclick="stack_click('s2')" id="s2">□□</span>─<span onclick="stack_click('s3')" id="s3">□□</span>─<span onclick="stack_click('s4')" id="s4">□□</span>┐┃ <span onclick="ace_pile('ace-0')" id="ace-0">□□</span> ┃
+     ┃     ┃ <span onclick="return_selection()">╳</span> →<span onclick="stack_click('s5')" id="s5">□□</span>─<span onclick="stack_click('s6')" id="s6">□□</span>─<span onclick="stack_click('s7')" id="s7">□□</span>─<span onclick="stack_click('s8')" id="s8">□□</span>┘┃ <span onclick="ace_pile('ace-1')" id="ace-1">□□</span> ┃
 ┏━━━━╋━━━━━┻━━━━━━━━━━━━━━━━┫ <span onclick="ace_pile('ace-2')" id="ace-2">□□</span> ┃
 ┃ <span id="selected-0">  </span> ┃ <span onclick="clicked('a0')" id="a0">□□</span> <span onclick="clicked('b0')" id="b0">□□</span> <span onclick="clicked('c0')" id="c0">□□</span> <span onclick="clicked('d0')" id="d0">□□</span> <span onclick="clicked('e0')" id="e0">□□</span> <span onclick="clicked('f0')" id="f0">□□</span> <span onclick="clicked('g0')" id="g0">□□</span> ┃ <span onclick="ace_pile('ace-3')" id="ace-3">□□</span> ┃
 ┃ <span id="selected-1">  </span> ┃ <span onclick="clicked('a1')" id="a1">□□</span> <span onclick="clicked('b1')" id="b1">□□</span> <span onclick="clicked('c1')" id="c1">□□</span> <span onclick="clicked('d1')" id="d1">□□</span> <span onclick="clicked('e1')" id="e1">□□</span> <span onclick="clicked('f1')" id="f1">□□</span> <span onclick="clicked('g1')" id="g1">□□</span> ┣━━━━┩

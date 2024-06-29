@@ -113,21 +113,36 @@ function deck_click() {
     start();
   } else {
     if (deck.length > 0) {
+      if (CURRENT_SELECTION.origin == "s0") {
+        return_selection();
+      }
       for (let index = 0; index < 3; index++) {
         STACK.unshift(deck.pop());
       }
       update_stack();
+      if (deck.length == 0) {
+        document.getElementById("deck").textContent = "□□"
+        document.getElementById("deck").setAttribute("style", "padding-left: 0.3em; padding-right: 0.3em;")
+      }
+    } else if (document.getElementById("deck").textContent != "□□" && CURRENT_SELECTION.content.length != 0) {
+      copy_to_selection(["deck"]);
+      document.getElementById("deck").textContent = "□□";
+      document.getElementById("deck").setAttribute("style", "padding-left: 0.3em; padding-right: 0.3em;");
+    } else if (CURRENT_SELECTION.content.length == 1) {
+      CURRENT_SELECTION.origin = "deck";
+      return_selection();
     }
   }
 }
 
 function update_stack() {
   for (let index = 0; index < MAX_STACK_SIZE; index++) {
-    let card = STACK[index];
+    let card = CARDS.get(STACK[index]);
     if (card != undefined) {
-      document.getElementById(STACK_IDS[index]).textContent = card;
+      change_slot(STACK_IDS[index], card);
     } else {
       document.getElementById(STACK_IDS[index]).textContent = "□□";
+      document.getElementById(STACK_IDS[index]).setAttribute("style", "color: black;");
     }
   }
 }
@@ -135,6 +150,9 @@ function update_stack() {
 function change_slot(id, card) {
   document.getElementById(id).textContent = card.name + card.suit;
   document.getElementById(id).setAttribute("style", "color: " + card.color + ";");
+  if (id == "deck") {
+    document.getElementById("deck").setAttribute("style", "color: " + card.color + "; padding-left: 0.3em; padding-right: 0.3em;")
+  }
 } 
 
 function update_blank_sections() {
@@ -180,16 +198,55 @@ function return_selection() {
     return;
   }
 
-  place_list_of_card_names(CURRENT_SELECTION.content, CURRENT_SELECTION.origin);
-
-  clear_selection();
-  update_blank_sections();
+  if (CURRENT_SELECTION.origin == "s0") {
+    STACK.unshift(CURRENT_SELECTION.content[0].name + CURRENT_SELECTION.content[0].suit);
+    clear_selection();
+    update_stack();
+  } else if (CURRENT_SELECTION.origin == "deck") {
+    change_slot("deck", CURRENT_SELECTION.content[0]);
+    clear_selection();
+  } else {
+    place_list_of_card_names(CURRENT_SELECTION.content, CURRENT_SELECTION.origin);
+    clear_selection();
+    update_blank_sections();
+  }
 }
 
 function place_list_of_card_names(list, id) {
   list.forEach(function lambda(value, index) {
     change_slot(id[0] + (parseInt(id[1], 16) + index).toString(16), value)
   });
+}
+
+function stack_click(id) {
+  if (id != "s0") {
+    return;
+  }
+  if (document.getElementById(id).textContent == "□□") {
+    return;
+  }
+  if (CURRENT_SELECTION.content.length > 0) {
+    return;
+  }
+
+  copy_to_selection([id]);
+  STACK.shift();
+  update_stack();
+}
+
+function ace_pile(id) {
+  if (CURRENT_SELECTION.length > 1) {
+    return;
+  }
+  let card = CURRENT_SELECTION.content[0];
+  if (card.number == 1 && document.getElementById(id).textContent == "□□") {
+    change_slot(id, card);
+    clear_selection();
+  } else if (card.number == CARDS.get(document.getElementById(id).textContent).number + 1 &&
+             card.suit == CARDS.get(document.getElementById(id).textContent).suit) {
+    change_slot(id, card);
+    clear_selection();
+  }
 }
 
 function clicked(id) {
@@ -278,7 +335,7 @@ function check_if_sequential(id) {
   order = order.map(id => CARDS.get(document.getElementById(id).textContent).number);
   let additives = ([...Array(order.length).keys()]);
   let sum = order.map(function combine(number, index) {
-    return (number - additives[index]) == order[0] - additives[0];
+    return number + additives[index] == order[0] - additives[0];
   });
 
   if (sum.reduce(function add(a, b) { return a + b; }, 0) != sum.length) {
