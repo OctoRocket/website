@@ -235,7 +235,7 @@ function stack_click(id) {
 }
 
 function ace_pile(id) {
-  if (CURRENT_SELECTION.length > 1) {
+  if (CURRENT_SELECTION.content.length != 1) {
     return;
   }
   let card = CURRENT_SELECTION.content[0];
