@@ -1,0 +1,25 @@
+#outer-bound {
+  width: 30rem;
+  margin: 6rem auto;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: larger;
+  font-family: "Fira Code", monospace;
+}
+
+pre {
+  width: min-content;
+  height: 21.85em;
+  margin: 4% auto;
+  -webkit-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+span {
+  cursor: pointer;
+}
