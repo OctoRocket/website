@@ -128,7 +128,7 @@ function deck_click() {
       copy_to_selection(["deck"]);
       document.getElementById("deck").textContent = "□□";
       document.getElementById("deck").setAttribute("style", "padding-left: 0.3em; padding-right: 0.3em;");
-    } else if (CURRENT_SELECTION.content.length == 1) {
+    } else if (document.getElementById("deck").textContent == "□□" && CURRENT_SELECTION.content.length == 1) {
       CURRENT_SELECTION.origin = "deck";
       return_selection();
     }
