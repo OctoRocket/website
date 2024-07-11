@@ -1,1 +1,0 @@
-/home/octorocket/Code/mine/asta/wasm/solitaire-wasm/target/wasm32-unknown-unknown/release/solitaire_wasm.wasm: /home/octorocket/Code/mine/asta/wasm/solitaire-wasm/src/lib.rs /home/octorocket/Code/mine/asta/wasm/solitaire-wasm/src/shared_functions.rs /home/octorocket/Code/mine/asta/wasm/solitaire-wasm/src/types.rs
