@@ -1,0 +1,1 @@
+/home/octorocket/Code/mine/asta/www/scripts/solitaire/solitaire-wasm/target/debug/libsolitaire_wasm.so: /home/octorocket/Code/mine/asta/www/scripts/solitaire/solitaire-wasm/src/lib.rs /home/octorocket/Code/mine/asta/www/scripts/solitaire/solitaire-wasm/src/shared_functions.rs /home/octorocket/Code/mine/asta/www/scripts/solitaire/solitaire-wasm/src/types.rs
