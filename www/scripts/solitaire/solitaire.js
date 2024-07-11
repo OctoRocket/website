@@ -88,7 +88,11 @@ function update_stack() {
 function update_deck() {
   if (board_state.deck != undefined) {
     set_slot(board_state.deck);
-    document.getElementById(board_state.deck.id).setAttribute("style", "padding: 0.3em;");
+    if (board_state.deck.state === "Empty") {
+      document.getElementById(board_state.deck.id).setAttribute("style", "padding: 0.3em;");
+    } else {
+      document.getElementById(board_state.deck.id).setAttribute("style", "color: " + board_state.deck.state.Occupied.color + "; padding: 0.3em;");
+    }
   }
 }
 

@@ -114,7 +114,7 @@ impl From<Option<Card>> for SlotState {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Slot {
     id: String,
-    state: SlotState,
+    pub state: SlotState,
 }
 
 impl Slot {
@@ -127,14 +127,6 @@ impl Slot {
 
     pub fn get_id(&self) -> &str {
         &self.id
-    }
-
-    pub const fn get_state(&self) -> &SlotState {
-        &self.state
-    }
-
-    pub fn set_state(&mut self, state: SlotState) {
-        self.state = state;
     }
 }
 
@@ -185,7 +177,7 @@ impl Stack {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Selection {
     /// `None` when empty
-    origin: Origin,
+    pub origin: Origin,
     contents: Vec<Slot>,
 }
 
@@ -197,24 +189,16 @@ impl Selection {
         }
     }
 
-    pub fn set_origin(&mut self, origin: Origin) {
-        self.origin = origin;
-    }
-
-    pub const fn get_origin(&self) -> &Origin {
-        &self.origin
-    }
-
     pub fn get_cards(&self) -> Vec<Card> {
         slots_to_cards(&self.contents)
     }
 
     pub fn set_contents(&mut self, origin: Origin, cards: Vec<Card>) {
-        if !self.get_origin().is_none() {
+        if !self.origin.is_none() {
             return;
         }
 
-        self.set_origin(origin);
+        self.origin = origin;
 
         for slot in cards.into_iter().zip(&mut self.contents) {
             slot.1.state = SlotState::Occupied(slot.0);
@@ -222,16 +206,25 @@ impl Selection {
     }
 
     pub fn clear(&mut self) {
-        self.set_origin(Origin::None);
+        self.origin = Origin::None;
         for slot in &mut self.contents {
             slot.state = SlotState::Blank;
         }
+    }
+
+    pub fn len(&self) -> usize {
+        self.get_cards().len()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.get_cards().is_empty()
     }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub enum Origin {
     None,
+    Deck,
     Stack,
     PlayingAreaId(String),
 }
@@ -301,7 +294,7 @@ impl PlayingArea for Vec<Vec<Slot>> {
                 column[0].state = SlotState::Empty;
             }
             for row in 1..column.len() {
-                if column[row - 1].get_state().is_occupied()
+                if column[row - 1].state.is_occupied()
                 && column[row].state == SlotState::Blank {
                     column[row].state = SlotState::Empty;
                 }

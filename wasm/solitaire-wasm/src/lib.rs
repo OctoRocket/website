@@ -148,18 +148,18 @@ fn ace_click(old_state: Board, id: char) -> Board {
     let mut new_state = old_state;
     let index = id.to_digit(10).unwrap() as usize;
 
-    if new_state.selection.get_cards().len() != 1 {
+    if new_state.selection.len() != 1 {
         return new_state;
     }
 
-    if new_state.aces[index].get_state() == &SlotState::Empty
+    if new_state.aces[index].state == SlotState::Empty
     && new_state.selection.get_cards()[0].get_number() == 1
     ||(new_state.selection.get_cards()[0].get_suit()
-    == new_state.aces[index].get_state().get_card().get_suit()
+    == new_state.aces[index].state.get_card().get_suit()
     && new_state.selection.get_cards()[0].get_number() - 1
-    == new_state.aces[index].get_state().get_card().get_number()
+    == new_state.aces[index].state.get_card().get_number()
     ) {
-        new_state.aces[index].set_state(SlotState::Occupied(new_state.selection.get_cards()[0]));
+        new_state.aces[index].state = SlotState::Occupied(new_state.selection.get_cards()[0]);
         new_state.selection.clear();
     }
 
@@ -170,7 +170,7 @@ fn ace_click(old_state: Board, id: char) -> Board {
 fn stack_click(old_state: Board) -> Board {
     let mut new_state = old_state;
 
-    if !new_state.selection.get_origin().is_none() {
+    if !new_state.selection.origin.is_none() {
         return new_state;
     }
 
@@ -183,15 +183,17 @@ fn stack_click(old_state: Board) -> Board {
 fn return_click(old_state: Board) -> Board {
     let mut new_state = old_state;
 
-    if new_state.selection.get_origin().is_none() {
+    if new_state.selection.origin.is_none() {
         return new_state;
     }
 
-    if new_state.selection.get_origin().has_id() {
-        new_state.playing_area.add_at_id(new_state.selection.get_origin().clone().unwrap(), new_state.selection.get_cards());
+    if new_state.selection.origin.has_id() {
+        new_state.playing_area.add_at_id(new_state.selection.origin.clone().unwrap(), new_state.selection.get_cards());
         new_state.playing_area.update_empty_slots();
-    } else {
+    } else if new_state.selection.origin == Origin::Stack {
         new_state.stack.push(new_state.selection.get_cards()[0]);
+    } else if let Some(deck) = &mut new_state.deck {
+        deck.state = SlotState::Occupied(new_state.selection.get_cards()[0]);
     }
 
     new_state.selection.clear();
@@ -206,13 +208,26 @@ fn deck_click(old_state: Board) -> Board {
         for _ in 0..3 {
             new_state.stack.push(new_state.available_cards.pop().expect("WRONG NUMBER OF CARDS IN THE DECK"));
         }
-    } else {
-        // TODO: implement holding ability!
-        todo!()
-    }
 
-    if new_state.available_cards.is_empty() {
-        new_state.deck = Some(Slot::new("deck0".to_string(), SlotState::Empty));
+        if new_state.available_cards.is_empty() {
+            new_state.deck = Some(Slot::new("deck".to_string(), SlotState::Empty));
+        }
+
+        if new_state.available_cards.is_empty() {
+            new_state.deck = Some(Slot::new("deck0".to_string(), SlotState::Empty));
+        }
+    } else if new_state.selection.is_empty() && new_state.deck.clone().is_some() && new_state.deck.clone().unwrap().state.is_occupied() {
+        new_state.selection.set_contents(Origin::Deck, vec![*new_state.deck.clone().unwrap().state.get_card()]);
+
+        if let Some(deck) = &mut new_state.deck {
+            deck.state = SlotState::Empty;
+        }
+    } else if new_state.selection.len() == 1 && new_state.deck.clone().is_some() && !new_state.deck.clone().unwrap().state.is_occupied() {
+        if let Some(deck) = &mut new_state.deck {
+            deck.state = SlotState::Occupied(new_state.selection.get_cards()[0]);
+        }
+
+        new_state.selection.clear();
     }
 
     new_state
@@ -222,9 +237,9 @@ fn playing_area_clicked(old_state: Board, id: &str) -> Board {
     let mut new_state = old_state;
     let (column, row) = get_coords_from_id(id);
 
-    if new_state.playing_area.get_from_id(id).get_state().is_occupied() {
+    if new_state.playing_area.get_from_id(id).state.is_occupied() {
         // Make sure that selection isn't already occupied
-        if !new_state.selection.get_cards().is_empty() {
+        if !new_state.selection.is_empty() {
             return new_state
         }
         // Check if get list of the cards in that column
@@ -243,17 +258,17 @@ fn playing_area_clicked(old_state: Board, id: &str) -> Board {
             .map(|slot| slot.get_id().to_string())
             .collect()
         );
-    } else if new_state.playing_area.get_from_id(id).get_state() == &SlotState::Empty {
-        if new_state.selection.get_origin().is_none() {
+    } else if new_state.playing_area.get_from_id(id).state == SlotState::Empty {
+        if new_state.selection.origin.is_none() {
             return new_state;
         }
 
         // Try to place cards onto the blank spot
         let coords = get_coords_from_id(id);
         if coords.1 == 0 || (
-               new_state.playing_area[coords.0][coords.1 - 1].get_state().get_card().get_color()
+               new_state.playing_area[coords.0][coords.1 - 1].state.get_card().get_color()
             != new_state.selection.get_cards()[0].get_color()
-            && new_state.playing_area[coords.0][coords.1 - 1].get_state().get_card().get_number() - 1
+            && new_state.playing_area[coords.0][coords.1 - 1].state.get_card().get_number() - 1
             == new_state.selection.get_cards()[0].get_number()
         ) {
             new_state.playing_area.add_at_id(id.to_string(), new_state.selection.get_cards());
