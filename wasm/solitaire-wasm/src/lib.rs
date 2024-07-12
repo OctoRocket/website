@@ -259,12 +259,16 @@ fn playing_area_clicked(old_state: Board, id: &str) -> Board {
             .collect()
         );
     } else if new_state.playing_area.get_from_id(id).state == SlotState::Empty {
-        if new_state.selection.origin.is_none() {
+        if new_state.selection.is_empty() {
             return new_state;
         }
 
         // Try to place cards onto the blank spot
         let coords = get_coords_from_id(id);
+        if coords.1 + new_state.selection.len() > ROWS as usize {
+            return new_state;
+        }
+
         if coords.1 == 0 || (
                new_state.playing_area[coords.0][coords.1 - 1].state.get_card().get_color()
             != new_state.selection.get_cards()[0].get_color()
