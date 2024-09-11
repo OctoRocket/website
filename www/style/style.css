@@ -32,6 +32,32 @@
   margin-bottom: 2rem;
 }
 
+.blog-container > div {
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.blog-header {
+  border: none;
+  border-bottom: 3px var(--teal) solid;
+  display: flex;
+  flex-direction: row;
+  row-gap: 100px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  margin: inherit 100%;
+}
+
+.blog-header * {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.blog-header > .description {
+  text-align: right;
+}
+
 .clear {
   border: transparent 0px;
   -webkit-backdrop-filter: none;
@@ -165,6 +191,14 @@ p {
 
 pre {
   font-family: "Fira Code", monospace;
+}
+
+ul {
+  list-style-type: "— ";
+}
+
+li::marker {
+  font-weight: bolder;
 }
 
 a {
