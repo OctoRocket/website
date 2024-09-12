@@ -116,7 +116,7 @@
 
 #right-column > div {
   border-color: var(--teal);
-  padding: 1rem;
+  padding: 0rem 1rem;
   margin-bottom: 1rem;
 }
 
@@ -130,6 +130,17 @@
   background-color: var(--paper);
   padding: 1rem;
   margin-bottom: 1rem;
+}
+
+#status-box p {
+  padding-right: 0.5rem;
+  margin: auto;
+}
+
+#status-box marquee {
+  width: 100%;
+  border-left: 3px solid var(--purple);
+  border-right: 3px solid var(--teal);
 }
 
 .paper {
