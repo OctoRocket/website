@@ -132,6 +132,10 @@
   margin-bottom: 1rem;
 }
 
+#status-box {
+  margin-top: 0.25rem;
+}
+
 #status-box p {
   padding-right: 0.5rem;
   margin: auto;
@@ -140,7 +144,7 @@
 #status-box marquee {
   width: 100%;
   border-left: 3px solid var(--purple);
-  border-right: 3px solid var(--teal);
+  border-right: 3px solid var(--purple);
 }
 
 .paper {
