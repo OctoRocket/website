@@ -1,6 +1,15 @@
+@font-face {
+  font-family: "DejaVu Sans";
+  src: url("/fonts/DejaVuSans.ttf");
+}
+
 #outer-bound {
   width: 30rem;
   margin: 6rem auto;
+}
+
+#deck0 {
+  font-weight: "DejaVu Sans", mono;
 }
 
 pre {

@@ -15,11 +15,6 @@
   src: url("/fonts/HomeVideo/HomeVideo-BLG6G.ttf");
 }
 
-@font-face {
-  font-family: "DejaVu Sans";
-  src: url("/fonts/DejaVuSans.ttf");
-}
-
 .home-video {
   font-family: "Home Video", monospace;
 }
@@ -168,7 +163,7 @@
   --yellow: #dddd10;
 
   color: #fff;
-  font-family: "Fira Code", "DejaVu Sans", monospace;
+  font-family: "Fira Code", monospace;
   font-optical-sizing: auto;
   font-weight: 500;
 }
