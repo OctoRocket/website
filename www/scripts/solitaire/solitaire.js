@@ -89,9 +89,9 @@ function update_deck() {
   if (board_state.deck != undefined) {
     set_slot(board_state.deck);
     if (board_state.deck.state === "Empty") {
-      document.getElementById(board_state.deck.id).setAttribute("style", "padding: 0.3em;");
+      document.getElementById(board_state.deck.id).setAttribute("style", "padding: 0.3em; font-family: \"Fira Code\", monospace;");
     } else {
-      document.getElementById(board_state.deck.id).setAttribute("style", "color: " + board_state.deck.state.Occupied.color + "; padding: 0.3em;");
+      document.getElementById(board_state.deck.id).setAttribute("style", "padding: 0.3em; font-family: \"Fira Code\", monospace; color: " + board_state.deck.state.Occupied.color + ";");
     }
   }
 }
@@ -120,6 +120,11 @@ export function cheat_delete_selection() {
   update_board_state();
 }
 
+export function get_board_state() {
+  return board_state;
+}
+
 // Add function to main window
 window.clicked = clicked;
 window.cheat_delete_selection= cheat_delete_selection;
+window.get_board_state = get_board_state;

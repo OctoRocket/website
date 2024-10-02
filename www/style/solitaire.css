@@ -9,10 +9,11 @@
 }
 
 #deck0 {
-  font-weight: "DejaVu Sans", monospace;
+  font-family: "DejaVu Sans", monospace;
 }
 
 pre {
+  font-family: "Fira Code", monospace;
   width: min-content;
   height: 21.85em;
   margin: 4% auto;
