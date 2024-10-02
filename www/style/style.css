@@ -209,10 +209,6 @@ p {
   text-align: justify;
 }
 
-pre {
-  font-family: "Fira Code", monospace;
-}
-
 ul {
   list-style-type: "— ";
 }
