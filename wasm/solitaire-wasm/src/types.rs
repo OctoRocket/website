@@ -182,7 +182,7 @@ pub struct Selection {
 }
 
 impl Selection {
-    pub fn new(origin: Origin, contents: Vec<Slot>) -> Self {
+    pub const fn new(origin: Origin, contents: Vec<Slot>) -> Self {
         Self {
             origin,
             contents,
@@ -221,6 +221,7 @@ impl Selection {
     }
 }
 
+/// Where the contents of selection came from.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub enum Origin {
     None,

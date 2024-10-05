@@ -18,13 +18,13 @@ pub fn get_coords_from_id(id: &str) -> (usize, usize) {
 }
 
 pub fn slots_to_cards(slots: &[Slot]) -> Vec<Card> {
-  slots.iter()
-    .filter(|slot| slot.state.is_occupied())
-    .map(|slot| {
-        let SlotState::Occupied(card) = slot.state else {
-            panic!("This should never happen");
-        };
-        card
-    })
-    .collect()
+    slots.iter()
+        .filter(|slot| slot.state.is_occupied())
+        .map(|slot| {
+            let SlotState::Occupied(card) = slot.state else {
+                panic!("This should never happen");
+            };
+            card
+        })
+        .collect()
 }

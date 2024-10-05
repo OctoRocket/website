@@ -103,8 +103,8 @@ fn generate_starting_board(deck: &mut Vec<Card>) -> Vec<Vec<Slot>> {
 
 fn generate_selection_slots() -> Selection {
     let mut slots = vec![];
-    for i in 0..COLUMNS {
-        slots.push(Slot::new("selected".to_string() + &i.to_string(), SlotState::Blank));
+    for i in 0..ROWS {
+        slots.push(Slot::new("selected".to_string() + &format!("{i:x}"), SlotState::Blank));
     }
 
     Selection::new(Origin::None, slots)
@@ -152,12 +152,15 @@ fn ace_click(old_state: Board, id: char) -> Board {
         return new_state;
     }
 
-    if new_state.aces[index].state == SlotState::Empty
-    && new_state.selection.get_cards()[0].get_number() == 1
-    ||(new_state.selection.get_cards()[0].get_suit()
-    == new_state.aces[index].state.get_card().get_suit()
-    && new_state.selection.get_cards()[0].get_number() - 1
-    == new_state.aces[index].state.get_card().get_number()
+    // If the ace slot is empty and the selection starts wit an ace, put the ace
+    // into the pile (this doesn't check if there is only one thing in the
+    // selection as (in theory) an ace will be alone in the selection stack),
+    // ELSE if the suits are the same and the new card is one less than the
+    // current card then add it to the ace pile.
+    if new_state.aces[index].state == SlotState::Empty && new_state.selection.get_cards()[0].get_number() == 1
+    || (
+        new_state.selection.get_cards()[0].get_suit() == new_state.aces[index].state.get_card().get_suit()
+     && new_state.selection.get_cards()[0].get_number() - 1 == new_state.aces[index].state.get_card().get_number()
     ) {
         new_state.aces[index].state = SlotState::Occupied(new_state.selection.get_cards()[0]);
         new_state.selection.clear();
@@ -242,7 +245,7 @@ fn playing_area_clicked(old_state: Board, id: &str) -> Board {
         if !new_state.selection.is_empty() {
             return new_state
         }
-        // Check if get list of the cards in that column
+        // Get list of the cards in that column
         let selection = slots_to_cards(&new_state.playing_area[column][row..]);
 
         if !alternating(&selection) || !decreasing(&selection) {
