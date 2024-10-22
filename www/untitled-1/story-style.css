@@ -1,0 +1,46 @@
+:root {
+    /* vars */
+    --paper: #fffffa;
+    --dark-gray: #3C4142;
+    --dim: #dddddd;
+    --purple: #6410cc;
+    --teal: #11cc66;
+    --red: #cc1077;
+    --yellow: #dddd10;
+}
+
+#story-content {
+    width: 65%;
+    margin-right: 1rem;
+    padding: 0 1rem;
+    color: inherit;
+}
+
+#footnotes {
+    width: 35%;
+    border-color: var(--teal);
+}
+
+#left-column > div {
+    background-color: inherit;
+}
+
+#page {
+    display: flex;
+    flex-direction: row;
+}
+
+table {
+    width: 100%;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: var(--purple) solid 1px;
+    padding: 4px 0.5rem;
+}
+
+table tr:first-child {
+    width: 1px;
+}

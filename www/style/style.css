@@ -104,8 +104,26 @@
   border-color: var(--yellow);
 }
 
+@media print, (max-width: 45rem) {
+  #outer-bound {
+    width: 45rem;
+  }
+}
+
+@media screen and (min-width: 65rem) {
+  #outer-bound {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 85rem) {
+  #outer-bound {
+    width: 85rem;
+  }
+}
+
+
 #outer-bound {
-  width: 65rem;
   margin: 6rem auto;
 }
 
