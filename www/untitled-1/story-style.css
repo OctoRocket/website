@@ -1,12 +1,8 @@
-:root {
-    /* vars */
-    --paper: #fffffa;
-    --dark-gray: #3C4142;
-    --dim: #dddddd;
-    --purple: #6410cc;
-    --teal: #11cc66;
-    --red: #cc1077;
-    --yellow: #dddd10;
+@media print {
+    div {
+        -webkit-backdrop-filter: none;
+                backdrop-filter: none;
+    }
 }
 
 #story-content {
