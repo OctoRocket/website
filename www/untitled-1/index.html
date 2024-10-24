@@ -22,8 +22,9 @@
         </p>
     </div>
 
-    <div id="page" class="main-section clear">
-    <div id="story-content">
+    <!-- Page 1: Intro -->
+    <div class="page main-section clear">
+    <div class="story-content">
         <p>
             "So... I do have to ask you... where'd you find this piece of
             junk?" <em>A portly man, advanced in age, sits at the front counter
@@ -96,7 +97,7 @@
             worker.</em>
         </p>
     </div>
-    <div id="footnotes">
+    <div class="footnotes">
         <ol class="description" style="font-size: large;">
             <li>National Cybernetic Retrival Service. The National Cybernetic
             Retrival Service is a nationalized rescue service for any and all
@@ -110,7 +111,7 @@
             with no practical way of attacking each other. This, of course, was
             well known. The war played out more like a game; raids, shootings,
             and bombings were carried out but no casualties occured. A study
-            from the time took survey of the soldiers after the war had
+            from the time took survey of the soldiers after the war and had
             concluded and noted "not a single solider on either side had taken
             on an injury that left permanent damage."</li>
             <li>The original text relates instead to a disease that had similar
@@ -118,6 +119,64 @@
             <li>Lymir had transfered to a 4 day work period the previous year.
             </li>
         </ol>
+    </div>
+    </div>
+
+    <!-- Page 2: Awakening -->
+    <div class="page main-section clear">
+    <div class="half-width story-content">
+        <p>
+        <em>A figure sits quietly in a perfectly white environment on its knees.
+        It's head is spherical with large, round, black eyes that watch the
+        floor. Though lacking a mouth, it looks in thought. It wears a cloth
+        veil over it's body, obsuring everything but the round legs it kneels
+        upon. It is a pale green in color, in contrast to that of the figure
+        floating in the corner --- its business does not need expounding upon
+        --- which is a pale purple. They also differ on the horns on their head.
+        While the pale purple figure has long, gently curved, jet black horns,
+        the jet black horns of the pale green figure are curved into a loop and
+        stick out straight forwards, simular to a ram's horns. The pale purple
+        figure turns to its sister, yet it doesn't find her.</em>
+        </p>
+        <p>
+        <em>A limb, pale green figure tumbles through a dark, dimly lit
+        warehouse. The body smashes through a rack of automatons. Not meant to
+        undergo stresses of any kind, it shatters immedietly. The horns slither,
+        shrinking down into a dark, shelless mollusk. It bounces off one of the
+        robots, but latches on to another, burying into the side.</em>
+        </p>
+        <p>
+        <em>An android with miniscule hole in the side of its chest crashes down
+        into a nonfunctional charging bay. Its antennas fire up sporadically,
+        trying their best to recieve instructions. A package is transmitted, but
+        the mollusk only recieves a segment of it. It will have to make do.</em>
+        </p>
+    </div>
+    <div class="half-width story-content terminal-root">
+        <p>[2808478.287319] Processing center removed prematurely¬<br>
+        [2808472.658201] Experiencing 51.0284% packet loss, trying to recover¬
+        <br>
+        [2808472.658892] Pain mitigation enabled, developing subsystem to handle
+        fragmented processing center.¬<br><br>
+        [indigo@C-NeuRelMaDS-2]$ echo "This is probably a bad idea, but if I'm
+        right it'll be worth it. The ALFO array got a big hit of EMF and
+        Vermillion started reporting issues before a seperation with her puppet
+        occured. I've got no idea where it went --- all I see is a gantry arm
+        without a puppet moving around frantically --- but I suspect another
+        plane interception occured. Enough talking- I have a sister I need to
+        comfort. I'll quickly see if I can have the puppet run on it's own and
+        see if we can regain control later." >> /root/manual-intervention.log¬
+        <br><br>
+        [indigo@C-NeuRelMaDS-2]$ recursor subsystem list --active¬<br>
+        0 - main¬<br>
+        4 - pain-mitigation-subsystem-aW5kZXguaHRtbD5hbG9uZS50eHQK¬<br><br>
+        [indigo@C-NeuRelMaDS-2]$ nix run -vv /root/scripts/transfer-subsystem --
+        4 /dev/mdi00¬<br>
+        Compartmentalizing...¬<br>
+        [###.......] 32%¬<br>
+        FAILED¬<br>
+        Unable to transfer full matrix snapshot to host, ABORTING¬<br><br>
+        </p>
     </div>
     </div>
 </div>
