@@ -42,13 +42,9 @@
     text-align: left;
 }
 
-.flipped {
-    color: red;
-    transform: rotate(20deg);
-    -o-transform: scale(-1, 1);
-    -ms-transform: scale(-1, 1);
-    -moz-transform: scale(-1, 1);
-    -webkit-transform: translate(-1, 1);
+.page-title {
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 @media screen {
