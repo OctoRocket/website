@@ -27,7 +27,7 @@ function format(commit) {
     const sha = commit.sha.substring(0, 7);
     const date = "<span class=\"full-time\">"
         + wrap_time(timestamp.getFullYear()) + "-"
-        + wrap_time(timestamp.getMonth()) + "-"
+        + wrap_time(timestamp.getMonth() + 1) + "-" // JS months start at zero...
         + wrap_time(timestamp.getDate()) + " "
         + wrap_time(timestamp.getHours()) + ":"
         + wrap_time(timestamp.getMinutes()) + ":"
