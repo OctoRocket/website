@@ -1,0 +1,38 @@
+:root {
+    --update-background-color: #0a0a0a;
+    --default-color: #aaa;
+
+    --hash: #6252f4;
+    --time-dark: #746e8b;
+    --time-light: #d73285;
+    --message: #7ec773;
+}
+
+#site-update-block {
+    border-radius: 1rem;
+    padding: 0 0.75rem 0 0.5rem;
+    margin: auto 1rem;
+    background-color: var(--update-background-color);
+    color: var(--default-color);
+}
+
+#site-update-block p {
+    text-align: left;
+}
+
+/* Color each section of the update log */
+.sha {
+    color: var(--hash);
+}
+
+.full-time {
+    color: var(--time-dark);
+}
+
+.time-section {
+    color: var(--time-light);
+}
+
+.message {
+    color: var(--message);
+}

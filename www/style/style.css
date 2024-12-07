@@ -105,13 +105,13 @@
   border-color: var(--yellow);
 }
 
-@media print, (max-width: 45rem) {
+@media print, (max-width: 70rem) {
   #outer-bound {
-    width: 45rem;
+    width: 70rem;
   }
 }
 
-@media screen and (min-width: 65rem) {
+@media screen and (min-width: 1300px) {
   #outer-bound {
     width: 90%;
   }
