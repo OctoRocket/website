@@ -37,7 +37,7 @@ function format(commit) {
     return "<p>>("
         + date
         + ")>-<<span class=\"sha\">" + sha
-        +"</span>:<br><span class=\"message\">>"+ name
+        +"</span>:<br>><span class=\"message\">"+ name
         + "</span>"
         + "</p>\n";
 }
