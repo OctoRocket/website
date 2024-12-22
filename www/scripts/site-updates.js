@@ -21,7 +21,7 @@ function format(commit) {
     }
     const timestamp = new Date(commit.date * 1000);
 
-    const name = (commit.message.length > 30)
+    const name = (commit.message.length > 32)
         ? commit.message.substring(0, 29) + "..."
         : commit.message.substring(0, 32);
     const sha = commit.sha.substring(0, 7);
