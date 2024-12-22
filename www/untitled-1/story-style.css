@@ -47,6 +47,10 @@
     text-align: center;
 }
 
+.reader-info {
+    color: var(--info-tint);
+}
+
 @media screen {
     .terminal-normal {
                 backdrop-filter: brightness(25%) blur(25px);
