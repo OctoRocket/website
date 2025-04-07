@@ -105,6 +105,17 @@
   border-color: var(--yellow);
 }
 
+#update-tracker {
+  padding: 0;
+  border: 0;
+  margin: 0.25rem 0;
+  justify-content: space-between;
+}
+
+#update-tracker p {
+  margin: 0;
+}
+
 @media print, (max-width: 70rem) {
   #outer-bound {
     width: 70rem;
@@ -149,10 +160,6 @@
   background-color: var(--paper);
   padding: 1rem;
   margin-bottom: 1rem;
-}
-
-#status-box {
-  margin-top: 0.25rem;
 }
 
 #status-box p {

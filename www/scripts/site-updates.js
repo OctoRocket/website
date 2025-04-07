@@ -11,6 +11,10 @@ function main() {
     commits.forEach(commit => {
         div.innerHTML += format(commit);
     });
+
+    // Update "last updated" text
+    var last_updated = document.getElementById("last-updated");
+    last_updated.innerHTML = last_update(commits[0]);
 }
 
 function format(commit) {
@@ -40,6 +44,23 @@ function format(commit) {
         +"</span>:<br>><span class=\"message\">"+ name
         + "</span>"
         + "</p>\n";
+}
+
+function last_update(commit) {
+    const fancy_options = {
+        month: "long",
+        day: "numeric",
+        weekday: "long",
+        year: "numeric",
+    }
+    const plain_options = {
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric",
+    }
+    const timestamp = new Date(commit.date * 1000);
+    return timestamp.toLocaleDateString(undefined, fancy_options)
+         + " ∨ " + timestamp.toLocaleDateString(undefined, plain_options);
 }
 
 async function fetch_commits(url) {
