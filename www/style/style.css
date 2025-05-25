@@ -153,11 +153,11 @@
 #left-column {
   width: 40%;
   margin-right: 1rem;
-  color: var(--dark-gray);
+  color: var(--dim);
 }
 
 #left-column > div {
-  background-color: var(--paper);
+  background-color: var(--rock);
   padding: 1rem;
   margin-bottom: 1rem;
 }
@@ -181,6 +181,7 @@
 :root {
   /* vars */
   --paper: #fffffa;
+  --rock: #48473c;
   --dark-gray: #3C4142;
   --dim: #dddddd;
   --purple: #6410cc;
