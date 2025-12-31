@@ -24,6 +24,105 @@
         <!--Main content!-->
         <div>
             <div class="blog-header">
+                <h3 class="home-video">So where have I been...</h3>
+                <p class="description">Date: 2025-12-31</p>
+            </div>
+            <p>
+                <p>
+                It's the last day of the year and, only now, I've come back to
+                update this site. What happened? Well, I've been """working"""
+                on the legendary <a href="https://leptos.dev/">Leptos</a> update
+                to my website and it turns out that it is not only way harder
+                than I thought it would be, but it also is going to take a long
+                time. By a long time I mean weeks of continual work, and as you
+                can probably infer by my habits maintaining this outpost on the
+                web, progress has been excruciating slow.<br>
+                At first I decided that this website would be completely static,
+                a noble goal as it would increase the availability of the site
+                to anyone who can render HTML, no (<i>*shivers*</i>) JavaScript
+                necessary. Unfortunately, my ambition got the best of me. First
+                I wanted to test my skills and make a little text only game of
+                solitaire. Then I got annoyed at maintaining the JavaScript
+                version of solitaire, so I wrote it with Rust and Web Assembly.
+                Then I wanted to track when I updated this site, so I added a
+                bit more JavaScript. Then I wanted to make sure I wasn't
+                spamming GitHub with requests, so I wrote a web server to cache
+                the website updater. Then I had the worst idea of the history of
+                this website.
+                </p>
+                <p>
+                <i>If I'm already using Rust for solitaire, and Rust for the
+                backend of the site updates display, why not use Rust for the
+                site updates display directly?</i> This is where everything went
+                south. I realized very quickly that writing a completely
+                seperate piece of rust code which would need to be packaged and
+                implementing it with JavaScript as a glue would hard to
+                maintain, and that if I wanted to add any more functionality to
+                my site (more games, easier blog updates, more widgets, a space
+                weather page, an RSS/Atom feed, and other things I wish to end
+                up doing with this site), I should make it easier to implement
+                that new functionality. This meant doing what I had been
+                avoiding: using a web framework.
+                </p>
+                <p>
+                Luckily, a friend of mine had recently used Leptos to make a
+                site of his own, and it worked very well. I made the decision to
+                rewrite this site using Leptos to power it in an effort to
+                simplify everything. It was not as simple as I first hoped.<br>
+                First mistake: I didn't actually make this decision until quite
+                a bit after I it thought up. Even though I wasn't actively
+                rewriting the site, I decided (for some reason) that working on
+                the existing site would be a waste of time because there was the
+                <i>possibility</i> that I would end up rewriting it anyways in
+                the future. This meant I was doing nothing with this site for
+                about 3 to 6 months with very little actual activity happening
+                at all. In addition, school starting up distracted me from my
+                site for a good while.<br>
+                Second mistake: I decided to reuse my solitaire code. In theory,
+                this seems like a no brainer. <i>"If I already have the code to
+                make solitaire work"</i>, I thought oh so naively, <i>"why put
+                in all the work rewritting the game"</i>? Little did I know, I
+                completely forgot how the codebase worked, it was incompatible
+                with any sort of intelligent rendering, and it would be a
+                massive undertaking as my first Leptos project.
+                </p>
+                <p>
+                Both of these factors compounded into me making net 0 progress
+                on the entire rewrite. What does this mean? Well, I've given up
+                on working backwards and rewritting my website from code I
+                haven't touched in over a year. Instead, I'll be working from
+                the ground up to rewrite this site in small chunks. Instead of
+                foregoing updating this version of the site entirely, I'll keep
+                working on this site while I write a good basis for the new
+                backend. I'll end up trying to copy as much of this HTML and CSS
+                as I can to the new site, so odds are the new site will not look
+                much different (if it looks different at all). I will hopefully
+                be adding some more creative writing to the site, but I think
+                untitled-1 is going on hold for a while. I simply don't know
+                where I want the story to go and a lot of the underlying
+                concepts that aren't revealed yet but have been influencing the
+                story are being reworked by me and
+                <a href="https://zsls.octorocket.dev/">River</a>. I never
+                mentioned it before now but we've actually been working on the
+                universe that untitled-1, a yet unreleased (and much smaller
+                scale) story I've been working on, and a few things River has
+                written (but I don't believe has released) together for over 5
+                years! A lot of my creative ideas go straight into his DMs and
+                eventually will make it on to a page here. Probably.
+                </p>
+                <p>
+                I did actually change some stuff about the site too! Most
+                importantly, I added River's web badge as well as my friend
+                Fuzz's. I also added my email to the contact info section in
+                case anyone wants to talk to me but doesn't have (or feel like
+                using) Discord. It gets lonely up here in space; I'm always open
+                to people messaging me! I'll try to get back to you as fast as I
+                can, speed of light permitting.
+                </p>
+            </p>
+        </div>
+        <div>
+            <div class="blog-header">
                 <h3 class="home-video">It's finally summer!</h3>
                 <p class="description">Date: 2025-05-25</p>
             </div>
