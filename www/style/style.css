@@ -82,6 +82,11 @@
   color: var(--yellow);
 }
 
+.overseer {
+  background-color: var(--asta);
+  border-radius: 0.2rem;
+}
+
 #title-title {
   font-size: x-large;
 }
@@ -189,6 +194,7 @@
   --red: #cc1077;
   --yellow: #dddd10;
   --info-tint: #acd58c;
+  --asta: #643cff;
 
   color: #fff;
   font-family: "Fira Code", monospace;
